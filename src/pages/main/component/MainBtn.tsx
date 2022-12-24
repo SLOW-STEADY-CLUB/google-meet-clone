@@ -40,7 +40,10 @@ const MainBtn = () => {
   return (
     <Container>
       <CreateBtn onClick={() => onClickAddBtn()}>
-        <MdOutlineVideoCall /> 새 회의
+        <MdOutlineVideoCall
+          style={{ marginRight: "0.5rem", width: "20px", height: "20px" }}
+        />
+        새 회의
       </CreateBtn>
       <JoinInput
         placeholder="코드 또는 링크 입력"
@@ -50,7 +53,9 @@ const MainBtn = () => {
           setJoin(false);
         }}
       />
-      <JoinBtn onClick={() => onClickJoinBtn()}>참여</JoinBtn>
+      <JoinBtn onClick={() => onClickJoinBtn()} visual={onFocused}>
+        참여
+      </JoinBtn>
       {join && <p>참여 코드를 다시 확인해주세요</p>}
     </Container>
   );
@@ -61,30 +66,71 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 const CreateBtn = styled.button`
+  border-radius: 4px;
+  position: relative;
+  background-color: var(--gm-fillbutton-container-color, #1a73e8);
+  color: var(--gm-fillbutton-ink-color, #fff);
+  font-size: 1rem;
+  padding: 0 16px 0 12px;
+  transition-duration: 280ms, 280ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
+    cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0s, 0s;
+  transition-property: border, box-shadow;
+  box-shadow: none;
+  height: 3em;
   margin-bottom: 1em;
   margin-right: 1.5em;
-  background-color: #1a73e8;
-  color: #fff;
-  padding: 0 16px 0 12px;
-  font-size: 1rem;
-  height: 3em;
+  white-space: nowrap;
+  outline: 1px solid transparent;
+  letter-spacing: 0.0107142857em;
+  font-weight: 500;
+  text-transform: none;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 64px;
+  border: none;
+  vertical-align: middle;
 `;
 const JoinInput = styled.input`
-  color: #3c4043;
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.00625em;
-  font-weight: 400;
-  height: 3em;
-  animation: 0.5s ease-in fadeIn 0s forwards;
-  padding: 5px;
+  margin-top: 0.1rem;
+  max-width: 20em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  border-radius: 4px;
+  height: 3.4em;
+  min-width: 17em;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 12em;
+  padding-right: max(16px, var(--mdc-shape-small, 4px));
+  transition-duration: 0.15s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0ms;
+  transition-property: opacity;
+
+  :focus {
+    outline: none;
+  }
 `;
 
-const JoinBtn = styled.button`
-  /* visibility: ${props => (props.disabled ? "visible" : "hidden")}; */
+const JoinBtn = styled.button<{ visual: boolean }>`
+  visibility: ${props => (props.visual ? "visible" : "hidden")};
   margin-left: 20px;
+  font-size: 1em;
+  height: 3em;
+  margin-top: 6px;
+  margin-bottom: 1em;
+  margin-right: 1.5em;
+  white-space: nowrap;
+  letter-spacing: 0.0107142857em;
+  font-weight: 500;
+  text-transform: none;
+  padding: 0 8px 0 8px;
+  min-width: 64px;
 `;
 
 export default MainBtn;

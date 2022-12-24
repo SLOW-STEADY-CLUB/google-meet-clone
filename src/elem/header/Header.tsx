@@ -1,54 +1,88 @@
-import React from "react"
-import styled from "styled-components"
-import HeaderBtn from "./HeaderBtn"
-import HeaderTime from "./HeaderTime"
+import React from "react";
+import styled from "styled-components";
+import HeaderBtn from "./HeaderBtn";
+import HeaderTime from "./HeaderTime";
 
 const Header = () => {
   return (
     <Container>
       <ImgBox>
-        <LogoImg src="https://res.cloudinary.com/softwarepundit/image/upload/c_lfill/dpr_1.0/f_auto/h_800/q_auto/w_800/v1/software/google-meet-logo" />
+        <STImgLogo src="https://res.cloudinary.com/softwarepundit/image/upload/c_lfill/dpr_1.0/f_auto/h_800/q_auto/w_800/v1/software/google-meet-logo" />
       </ImgBox>
-      <TimeBtnBox>
+      <STBoxTimeBtn>
         <HeaderTime />
         <HeaderBtn />
-      </TimeBtnBox>
+      </STBoxTimeBtn>
       <LoginBtn></LoginBtn>
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
-  background-color: aliceblue;
+  position: relative;
+  width: 100%;
+  height: 64px;
+  padding: 8px;
   justify-content: space-between;
   display: flex;
-  max-width: 100%;
-  height: 64px;
-  @media screen {
-    min-width: 600px;
-  }
-`
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  transition-property: background-color;
+`;
 const ImgBox = styled.div`
-  background-color: aqua;
   width: 40vw;
   padding-right: 30px;
   margin-left: 20px;
-`
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  height: 48px;
+  vertical-align: middle;
+  white-space: nowrap;
+  -webkit-box-align: center;
+  align-items: center;
+`;
 
 //STImgLogo
-const LogoImg = styled.img`
+const STImgLogo = styled.img`
   width: 190px;
   height: 65px;
-`
+`;
 
 //STBoxTimeBtn
-const TimeBtnBox = styled.div`
+const STBoxTimeBtn = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: row;
   font-size: 18px;
-`
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  justify-content: space-between;
+  height: 48px;
+  vertical-align: middle;
+  white-space: nowrap;
+  -webkit-box-align: center;
+  --mdc-font-size: 2vmin;
+  --gm-button--font-size: 1em;
+`;
 
-const LoginBtn = styled.div``
-export default Header
+const LoginBtn = styled.div`
+  box-sizing: border-box;
+  height: 48px;
+  line-height: normal;
+  padding: 0 4px;
+  padding-left: 30px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  vertical-align: middle;
+  white-space: nowrap;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  --mdc-font-size: 2vmin;
+  --gm-button--font-size: 1em;
+`;
+export default Header;

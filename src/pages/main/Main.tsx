@@ -23,15 +23,15 @@ const MainContainer = styled.div`
   min-height: 100%;
   width: 100vw;
   overflow-y: auto;
-  overflow-x: hidden;
   font-size: 1rem;
-  animation: 0.5s ease-in fadeIn 0s forwards;
-
-  /* @media screen {
-    height: calc(100vh - 3.5rem);
-    max-aspect-ratio: 3 / 4;
-    max-width: 60rem;
-  } */
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-name: fadeIn;
 `;
 const MainBox = styled.div`
   align-items: center;
