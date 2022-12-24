@@ -23,19 +23,6 @@ const Container = styled.div`
   flex-shrink: 1;
   max-width: 35rem;
   padding: 1em 3em;
-  align-items: center;
-  text-align: center;
-  padding: 1rem 3%;
-  flex-basis: auto;
-  width: 100%;
-  max-width: 39rem;
-
-  /* @media screen {
-    max-aspect-ratio: 3 / 4;
-    min-height: 32rem;
-    max-width: 60rem;
-    min-height: 32rem;
-  } */
 `;
 
 const Title = styled.div`

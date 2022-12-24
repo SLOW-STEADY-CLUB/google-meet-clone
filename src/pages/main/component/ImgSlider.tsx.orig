@@ -21,12 +21,7 @@ const ImgSlider = () => {
     url: string;
     title: string;
     content: string;
-<<<<<<< HEAD:src/pages/main/component/ImgSlider.tsx
-  }
-=======
-  };
-  
->>>>>>> feature/login:src/pages/main/component/imgSlider.tsx
+}
 
   const imgList = [
     {
