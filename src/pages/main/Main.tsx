@@ -40,5 +40,7 @@ const MainBox = styled.div`
   justify-content: space-evenly;
   min-height: 100%;
   width: 100vw;
+  flex-wrap: wrap;
+  gap: 1em;
 `;
 export default Main;
