@@ -30,7 +30,9 @@ const ChatBody = () => {
     let obj = {};
     await onValue(locate, data => {
       obj = data.val();
-      setChatData(Object.values(obj));
+      if (obj !== null) {
+        setChatData(Object.values(obj));
+      }
     });
   };
 
