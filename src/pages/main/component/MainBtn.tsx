@@ -6,16 +6,17 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import { nanoid } from "nanoid";
 import { To, useNavigate } from "react-router-dom";
 
+interface NavigateFunction {
+  (to: To): void;
+}
+
 const MainBtn = () => {
   const [onFocused, setOnFocused] = useState<boolean>(false);
   const [join, setJoin] = useState<boolean>(false);
   const navigate: NavigateFunction = useNavigate();
   const id = nanoid();
   const inputRef = useRef<HTMLInputElement>(null);
-
-  interface NavigateFunction {
-    (to: To): void;
-  }
+  let dataId: string[] = [];
 
   const onClickAddBtn = async () => {
     const data = {
@@ -27,13 +28,21 @@ const MainBtn = () => {
   };
 
   const onClickJoinBtn = async () => {
-    let dataId: string[] = [];
     const dataList = await getDocs(collection(db, "meetting"));
     dataList.forEach(data => {
-      dataId.push(data.data().roomId);
+      return dataId.push(data.data().roomId);
     });
-    dataId.map(id => {
-      id === inputRef.current?.value ? navigate(`/join/${id}`) : setJoin(true);
+    checkRoomId();
+  };
+
+  const checkRoomId = async () => {
+    console.log(dataId);
+    await dataId.map((id: string) => {
+      if (id === inputRef.current?.value) {
+        return navigate(`/join/${id}`);
+      } else {
+        return setJoin(true);
+      }
     });
   };
 
