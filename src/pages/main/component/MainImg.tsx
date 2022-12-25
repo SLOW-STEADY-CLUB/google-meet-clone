@@ -18,6 +18,7 @@ const Container = styled.div`
   flex-basis: 45%;
   overflow: hidden;
   padding: 1em 3em;
+  flex-shrink: 0;
 `;
 
 const ImgBox = styled.div`

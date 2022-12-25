@@ -9,13 +9,9 @@ const ImgSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    // arrows: true,
     autoplay: false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // centerMode: true,
-    // variableWidth: true,
-    // centerPadding: "0px",
     nextArrow: (
       <STNextBtn>
         <SlArrowRight style={{ width: "20px", height: "20px" }}></SlArrowRight>
@@ -110,15 +106,6 @@ const StyledSlide = styled(Slider)`
     top: 26rem;
   }
 
-  /* .slick-arrow {
-    padding: 4px 6px;
-    transform: translate(30px, 150px);
-    background-color: transparent;
-    color: #000000;
-    border-radius: 3px;
-    cursor: pointer;
-  } */
-
   .slick-prev {
     position: absolute;
     top: 160px;
@@ -146,11 +133,18 @@ const STPrevBtn = styled.div`
   width: 30px;
   height: 30px;
   position: absolute;
+
+  :hover {
+    opacity: 40%;
+  }
 `;
 
 const STNextBtn = styled.div`
   width: 30px;
   height: 30px;
   position: absolute;
+  :hover {
+    opacity: 40%;
+  }
 `;
 export default ImgSlider;

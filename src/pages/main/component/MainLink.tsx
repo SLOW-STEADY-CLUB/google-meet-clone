@@ -20,7 +20,7 @@ const Container = styled.div`
   display: inline-flex;
   flex-basis: 35rem;
   flex-direction: column;
-  flex-shrink: 1;
+  flex-shrink: 0;
   max-width: 35rem;
   padding: 1em 3em;
 `;
