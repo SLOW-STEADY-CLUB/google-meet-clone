@@ -1,32 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { SlQuestion, SlBubble, SlSettings } from "react-icons/sl";
 import {
   getAuth,
+  signInWithRedirect,
+  getRedirectResult,
   GoogleAuthProvider,
   UserCredential,
   signInWithPopup,
+  OAuthCredential,
 } from "firebase/auth";
 import { provider } from "../../api/firebase";
 
 const HeaderBtn: React.FC = () => {
-  const [user, setUser] = useState({});
-
+  console.log(window.sessionStorage.getItem("token"));
   const onClickSignUp = () => {
-    if (window.sessionStorage.getItem("token") === null) {
-      const auth = getAuth();
-      signInWithPopup(auth, provider).then((result: UserCredential) => {
-        const credential = GoogleAuthProvider?.credentialFromResult(result);
-        if (credential !== null && credential.accessToken !== undefined) {
-          const token: string = credential.accessToken;
-          window.sessionStorage.setItem("token", token);
-        }
-        const user = result.user;
-        setUser(user);
-      });
-    } else {
-      window.alert("이미 로그인 하셨습니다");
-    }
+    const auth = getAuth();
+    signInWithPopup(auth, provider).then((result: UserCredential) => {
+      const credential = GoogleAuthProvider?.credentialFromResult(result);
+      if (credential !== null && credential.accessToken !== undefined) {
+        const token: string = credential.accessToken;
+        window.sessionStorage.setItem("token", token);
+      }
+
+      const user = result.user;
+    });
   };
 
   return (

@@ -3,9 +3,12 @@ import styled from "styled-components";
 import { SlQuestion, SlBubble, SlSettings } from "react-icons/sl";
 import {
   getAuth,
+  signInWithRedirect,
+  getRedirectResult,
   GoogleAuthProvider,
   UserCredential,
   signInWithPopup,
+  OAuthCredential,
 } from "firebase/auth";
 import { provider } from "../../api/firebase";
 
