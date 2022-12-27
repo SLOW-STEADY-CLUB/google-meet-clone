@@ -36,6 +36,7 @@ const MainBtn = () => {
   };
 
   const checkRoomId = async () => {
+    console.log(dataId);
     await dataId.map((id: string) => {
       if (id === inputRef.current?.value) {
         return navigate(`/join/${id}`);
@@ -118,7 +119,7 @@ const JoinInput = styled.input`
   transition-duration: 0.15s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: 0ms;
-  /* transition-property: opacity; */
+  transition-property: opacity;
 
   :focus {
     outline: none;

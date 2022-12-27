@@ -35,9 +35,11 @@ const MainBtn = () => {
     checkRoomId();
   };
 
-  const checkRoomId = async () => {
-    await dataId.map((id: string) => {
+  const checkRoomId = () => {
+    dataId.map((id: string) => {
       if (id === inputRef.current?.value) {
+        console.log(id);
+        console.log(inputRef.current.value);
         return navigate(`/join/${id}`);
       } else {
         return setJoin(true);
@@ -118,7 +120,7 @@ const JoinInput = styled.input`
   transition-duration: 0.15s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: 0ms;
-  /* transition-property: opacity; */
+  transition-property: opacity;
 
   :focus {
     outline: none;

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { SlQuestion, SlBubble, SlSettings } from "react-icons/sl";
 import {
   getAuth,
+  signInWithRedirect,
+  getRedirectResult,
   GoogleAuthProvider,
   UserCredential,
   signInWithPopup,
@@ -10,23 +12,20 @@ import {
 import { provider } from "../../api/firebase";
 
 const HeaderBtn: React.FC = () => {
-  const [user, setUser] = useState({});
+  let user;
 
   const onClickSignUp = () => {
-    if (window.sessionStorage.getItem("token") === null) {
-      const auth = getAuth();
-      signInWithPopup(auth, provider).then((result: UserCredential) => {
-        const credential = GoogleAuthProvider?.credentialFromResult(result);
-        if (credential !== null && credential.accessToken !== undefined) {
-          const token: string = credential.accessToken;
-          window.sessionStorage.setItem("token", token);
-        }
-        const user = result.user;
-        setUser(user);
-      });
-    } else {
-      window.alert("이미 로그인 하셨습니다");
-    }
+    const auth = getAuth();
+    signInWithPopup(auth, provider).then(result => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      console.log(result);
+      console.log(user);
+      // ...
+    });
   };
 
   return (
