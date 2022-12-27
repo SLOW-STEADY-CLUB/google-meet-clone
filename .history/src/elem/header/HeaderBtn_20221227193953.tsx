@@ -3,9 +3,12 @@ import styled from "styled-components";
 import { SlQuestion, SlBubble, SlSettings } from "react-icons/sl";
 import {
   getAuth,
+  signInWithRedirect,
+  getRedirectResult,
   GoogleAuthProvider,
   UserCredential,
   signInWithPopup,
+  OAuthCredential,
 } from "firebase/auth";
 import { provider } from "../../api/firebase";
 
@@ -28,7 +31,7 @@ const HeaderBtn: React.FC = () => {
       window.alert("이미 로그인 하셨습니다");
     }
   };
-
+  console.log(user);
   return (
     <>
       <Button>

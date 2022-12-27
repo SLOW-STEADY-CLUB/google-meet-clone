@@ -3,14 +3,17 @@ import styled from "styled-components";
 import { SlQuestion, SlBubble, SlSettings } from "react-icons/sl";
 import {
   getAuth,
+  signInWithRedirect,
+  getRedirectResult,
   GoogleAuthProvider,
   UserCredential,
   signInWithPopup,
+  OAuthCredential,
 } from "firebase/auth";
 import { provider } from "../../api/firebase";
 
 const HeaderBtn: React.FC = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
 
   const onClickSignUp = () => {
     if (window.sessionStorage.getItem("token") === null) {
@@ -22,7 +25,7 @@ const HeaderBtn: React.FC = () => {
           window.sessionStorage.setItem("token", token);
         }
         const user = result.user;
-        setUser(user);
+        console.log(user);
       });
     } else {
       window.alert("이미 로그인 하셨습니다");
