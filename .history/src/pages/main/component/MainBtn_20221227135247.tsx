@@ -35,11 +35,15 @@ const MainBtn = () => {
     checkRoomId();
   };
 
-  const checkRoomId = async () => {
-    await dataId.map((id: string) => {
+  const checkRoomId = () => {
+    dataId.map((id: string) => {
       if (id === inputRef.current?.value) {
+        console.log(id);
+        console.log(inputRef.current.value);
         return navigate(`/join/${id}`);
       } else {
+        console.log(id);
+        console.log(inputRef.current.value);
         return setJoin(true);
       }
     });

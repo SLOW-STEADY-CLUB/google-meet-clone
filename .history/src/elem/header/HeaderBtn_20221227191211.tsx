@@ -21,14 +21,16 @@ const HeaderBtn: React.FC = () => {
       const user = result.user;
       console.log(result);
       console.log(user);
-      console.log(token);
     });
   };
 
   return (
     <>
       <Button>
-        <SlQuestion style={{ width: "24px", height: "24px" }} />
+        <SlQuestion
+          onClick={onClickSignUp}
+          style={{ width: "24px", height: "24px" }}
+        />
       </Button>
       <Button>
         <SlBubble style={{ width: "24px", height: "24px" }} />

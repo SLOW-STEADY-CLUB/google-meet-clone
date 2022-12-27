@@ -7,28 +7,32 @@ import {
   getRedirectResult,
   GoogleAuthProvider,
   UserCredential,
-  signInWithPopup,
 } from "firebase/auth";
 import { provider } from "../../api/firebase";
 
 const HeaderBtn: React.FC = () => {
+  let result;
+
   const onClickSignUp = () => {
     const auth = getAuth();
-    signInWithPopup(auth, provider).then(result => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
+    // signInWithRedirect(auth, provider);
+    result = getRedirectResult(auth);
+    // // This gives you a Google Access Token. You can use it to access Google APIs.
+    // const credential = GoogleAuthProvider.credentialFromResult(result);
+    // const token = credential.accessToken;
 
-      const user = result.user;
-      console.log(result);
-      console.log(user);
-      console.log(token);
-    });
+    // // The signed-in user info.
+    // const user = result.user;
   };
 
+  console.log(result);
   return (
     <>
       <Button>
-        <SlQuestion style={{ width: "24px", height: "24px" }} />
+        <SlQuestion
+          onClick={onClickSignUp}
+          style={{ width: "24px", height: "24px" }}
+        />
       </Button>
       <Button>
         <SlBubble style={{ width: "24px", height: "24px" }} />

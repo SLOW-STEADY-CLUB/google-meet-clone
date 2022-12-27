@@ -36,6 +36,7 @@ const MainBtn = () => {
   };
 
   const checkRoomId = async () => {
+    console.log(dataId);
     await dataId.map((id: string) => {
       if (id === inputRef.current?.value) {
         return navigate(`/join/${id}`);
