@@ -1,30 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { SlQuestion, SlBubble, SlSettings } from "react-icons/sl";
-import {
-  getAuth,
-  signInWithRedirect,
-  getRedirectResult,
-  GoogleAuthProvider,
-  UserCredential,
-  signInWithPopup,
-} from "firebase/auth";
-import { provider } from "../../api/firebase";
+import { getAuth, signInWithRedirect } from "firebase/auth";
 
 const HeaderBtn: React.FC = () => {
-  const onClickSignUp = () => {
-    const auth = getAuth();
-    signInWithPopup(auth, provider).then(result => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
-
-      const user = result.user;
-      console.log(result);
-      console.log(user);
-      console.log(token);
-    });
-  };
-
   return (
     <>
       <Button>
