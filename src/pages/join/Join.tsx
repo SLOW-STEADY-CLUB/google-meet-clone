@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import { IoMicOffOutline, IoMicOutline, IoVideocamOffOutline, IoVideocamOutline } from "react-icons/io5";
-
+import Camera from './component/Cam';
 
 const Join: React.FC = () => {
     return (
@@ -15,6 +15,7 @@ const Join: React.FC = () => {
                 </Profile>
             </Head>
             <Body>
+                <Camera />
                 <CameraArea>
                     <Text>
                         카메라가 꺼져 있음
