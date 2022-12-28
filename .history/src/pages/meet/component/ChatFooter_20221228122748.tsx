@@ -1,4 +1,4 @@
-import React, { ReducerAction, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { CiPaperplane } from "react-icons/ci";
 import { useParams } from "react-router-dom";
@@ -11,11 +11,7 @@ const ChatFooter = () => {
 
   const locate = ref(database, `chat/${roomId}`);
 
-  const onSubmit = async (
-    event:
-      | React.FormEvent<HTMLFormElement>
-      | React.MouseEvent<HTMLOrSVGElement>,
-  ) => {
+  const onSubmit = async (event: any) => {
     event.preventDefault();
     const timeList = new Date().toLocaleTimeString().split(":");
     const time = `${timeList[0]}:${timeList[1]}`;
@@ -40,7 +36,7 @@ const ChatFooter = () => {
         <STInputBox>
           <STInput ref={inputRef} />
           <CiPaperplane
-            onClick={event => onSubmit(event)}
+            onClick={e => onSubmit(e)}
             style={{
               width: "24px",
               height: "24px",
