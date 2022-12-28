@@ -30,6 +30,8 @@ const ChatFooter = () => {
       };
       push(locate, data);
     }
+
+
     if (inputRef.current) {
       inputRef.current.value = "";
     }

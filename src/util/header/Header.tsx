@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import React from "react";
+>>>>>>> b1bf7d5 ([EDIT] getCookie)
 import styled from "styled-components";
 import HeaderBtn from "./HeaderBtn";
 import HeaderTime from "./HeaderTime";
 import Login from "../user/Login";
+<<<<<<< HEAD
 import HeaderQuestionToggle from "./HeaderQuestionToggle";
 const Header = () => {
   const [question, setQuestion] = useState(false);
@@ -22,6 +27,22 @@ const Header = () => {
       </Container>
       {question && <HeaderQuestionToggle />}
     </>
+=======
+const Header = () => {
+  return (
+    <Container>
+      <ImgBox>
+        <STImgLogo src="https://res.cloudinary.com/softwarepundit/image/upload/c_lfill/dpr_1.0/f_auto/h_800/q_auto/w_800/v1/software/google-meet-logo" />
+      </ImgBox>
+      <STBoxTimeBtn>
+        <HeaderTime />
+        <HeaderBtn />
+      </STBoxTimeBtn>
+      <LoginBtn>
+        <Login />
+      </LoginBtn>
+    </Container>
+>>>>>>> b1bf7d5 ([EDIT] getCookie)
   );
 };
 
@@ -59,7 +80,10 @@ const STImgLogo = styled.img`
 
 //STBoxTimeBtn
 const STBoxTimeBtn = styled.div`
+<<<<<<< HEAD
   position: relative;
+=======
+>>>>>>> b1bf7d5 ([EDIT] getCookie)
   display: flex;
   align-items: center;
   flex-direction: row;
