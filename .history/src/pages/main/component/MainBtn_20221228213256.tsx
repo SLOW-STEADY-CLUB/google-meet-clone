@@ -1,12 +1,11 @@
 import React, { useRef, useState } from "react";
-import { db } from "../../../server/firebase";
+import { db } from "../../../api/firebase";
 import styled from "styled-components";
 import { MdOutlineVideoCall } from "react-icons/md";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { nanoid } from "nanoid";
 import { To, useNavigate } from "react-router-dom";
 import { getCookie } from "../../../shared/Cookie";
-import signInWithGoogle from "../../../shared/SignInWithPopup";
 
 interface NavigateFunction {
   (to: To): void;
@@ -29,9 +28,6 @@ const MainBtn = () => {
       };
       await addDoc(collection(db, "meetting"), data);
       navigate(`/meet/${data.roomId}`);
-    }
-    if (getCookie("token") === undefined) {
-      signInWithGoogle();
     }
   };
 

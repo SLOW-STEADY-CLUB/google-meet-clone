@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { db } from "../../../server/firebase";
+import { db } from "../../../api/firebase";
 import styled from "styled-components";
 import { MdOutlineVideoCall } from "react-icons/md";
 import { addDoc, collection, getDocs } from "firebase/firestore";
