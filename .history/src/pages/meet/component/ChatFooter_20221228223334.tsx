@@ -28,6 +28,7 @@ const ChatFooter = () => {
         content: inputRef.current?.value,
         roomId: roomId,
       };
+      console.log(data.content);
       push(locate, data);
     }
     if (inputRef.current) {

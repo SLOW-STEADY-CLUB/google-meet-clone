@@ -21,15 +21,17 @@ const ChatFooter = () => {
     const timeList = new Date().toLocaleTimeString().split(":");
     const time = `${timeList[0]}:${timeList[1]}`;
     const userNick = getCookie("userName");
-    if (inputRef.current?.value !== "") {
+    if (inputRef.current?.value !== null) {
       const data = {
         userNick: userNick,
         chatTime: time,
         content: inputRef.current?.value,
         roomId: roomId,
       };
+
       push(locate, data);
     }
+
     if (inputRef.current) {
       inputRef.current.value = "";
     }
