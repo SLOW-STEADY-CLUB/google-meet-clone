@@ -9,7 +9,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
@@ -21,8 +21,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const provider = new GoogleAuthProvider();
+export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const database = getDatabase(app);
 export const provider = new GoogleAuthProvider();
