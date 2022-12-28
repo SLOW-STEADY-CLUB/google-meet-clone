@@ -5,23 +5,7 @@ import { IoMicOffOutline, IoMicOutline, IoVideocamOffOutline, IoVideocamOutline 
 
 
 const Stream: React.FC = () => {
-// const Cam = () => {
-    // const [userEmail, setUserEmail] = React.useState();
-    // const [streamState, setStreamState] = React.useState({
-    //     mic : false,
-    //     video: false,
-    // });
 
-    // const micClick = () => {
-    //     setStreamState((currentState) => {
-
-    //         return {
-    //             ...currentState,
-    //             mic: !currentState.mic
-    //         }
-    //     })
-    // }
-    //const myFace = document.getElementById('myFace') as HTMLVideoElement | null;
     const muteBtn = useRef<HTMLButtonElement>(null);
     const cameraBtn = useRef<HTMLButtonElement>(null);
     const myFaceRef = useRef<HTMLVideoElement>(null);
@@ -63,22 +47,22 @@ const Stream: React.FC = () => {
     function handleMuteClick () {
         if (!muted) {
             //버튼 변경
-            muteBtn.innerText = "음소거 X"
+            //muteBtn.innerText = "음소거 X"
             muted = true;
         } else {
             //버튼 변경
-            muteBtn.innerText = "음소거 o"
+            //muteBtn.innerText = "음소거 o"
             muted = false;
         }
     } 
     function handleCameraClick () {
         if (cameraOff) {
             //버튼 변경
-            muteBtn.innerText = "카메라 on"
+            //muteBtn.innerText = "카메라 on"
             cameraOff = false;
         } else {
             //버튼 변경
-            muteBtn.innerText = "카메라 off"
+            //muteBtn.innerText = "카메라 off"
             cameraOff = true;
         }
     }

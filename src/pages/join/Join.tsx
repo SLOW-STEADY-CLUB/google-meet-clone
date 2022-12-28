@@ -22,8 +22,6 @@ const Join: React.FC = () => {
                     </Text>
                     
                     <Stream />
-                    <button id='mute'>mute</button>
-                    <button id='camera'>camera</button>
 
                 </CameraArea>
                 <Box>
