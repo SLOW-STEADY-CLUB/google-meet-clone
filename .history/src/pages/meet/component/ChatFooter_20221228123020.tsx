@@ -1,10 +1,9 @@
-import React, { ReducerAction, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { CiPaperplane } from "react-icons/ci";
 import { useParams } from "react-router-dom";
-import { database } from "../../../server/firebase";
+import { database } from "../../../api/firebase";
 import { push, ref } from "firebase/database";
-import { getCookie } from "../../../shared/Cookie";
 
 const ChatFooter = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -12,17 +11,14 @@ const ChatFooter = () => {
 
   const locate = ref(database, `chat/${roomId}`);
 
-  const onSubmit = async (
-    event:
-      | React.FormEvent<HTMLFormElement>
-      | React.MouseEvent<HTMLOrSVGElement>,
-  ) => {
+  const onSubmit = async (event: any) => {
+    console.log(typeof event);
     event.preventDefault();
     const timeList = new Date().toLocaleTimeString().split(":");
     const time = `${timeList[0]}:${timeList[1]}`;
-    const userNick = getCookie("userName");
+
     const data = {
-      userNick: userNick,
+      userNick: "susu",
       chatTime: time,
       content: inputRef.current?.value,
       roomId: roomId,
@@ -41,7 +37,7 @@ const ChatFooter = () => {
         <STInputBox>
           <STInput ref={inputRef} />
           <CiPaperplane
-            onClick={event => onSubmit(event)}
+            onClick={e => onSubmit(e)}
             style={{
               width: "24px",
               height: "24px",

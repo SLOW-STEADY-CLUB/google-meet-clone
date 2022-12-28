@@ -4,7 +4,7 @@ import Main from "./main/Main";
 import Join from "./join/Join";
 import Chat from "./meet/component/Chat";
 
-const Shared = () => {
+const Shared: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Main />} />

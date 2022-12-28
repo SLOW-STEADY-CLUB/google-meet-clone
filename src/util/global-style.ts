@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 *{
@@ -8,6 +8,9 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
     box-sizing: border-box;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin-right: 20px;
 }
 
 button {
@@ -16,4 +19,4 @@ button {
     border: 0px;
     cursor: pointer;
 }
-`
+`;
