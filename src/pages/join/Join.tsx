@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
-import { IoMicOffOutline, IoMicOutline, IoVideocamOffOutline, IoVideocamOutline } from "react-icons/io5";
 
+import Stream from './component/Stream';
 
 const Join: React.FC = () => {
     return (
@@ -15,20 +15,14 @@ const Join: React.FC = () => {
                 </Profile>
             </Head>
             <Body>
+                {/* <Camera /> */}
                 <CameraArea>
                     <Text>
                         카메라가 꺼져 있음
                     </Text>
-                    <Icon>
-                        <Mic>
-                            <IoMicOutline color='red' size='22'/>
-                            <IoMicOffOutline color='red' size='22'/>
-                        </Mic>
-                        <Cam>
-                            <IoVideocamOutline color='red' size='22'/>
-                            <IoVideocamOffOutline color='red' size='22'/>
-                        </Cam>
-                    </Icon>
+                    
+                    <Stream />
+
                 </CameraArea>
                 <Box>
                     <div>
@@ -126,17 +120,4 @@ const Text = styled.div`
     justify-content: center;
     text-align: center;
     align-items: center;
-`
-const Icon = styled.div`
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-`
-const Mic = styled.button`
-   
-`
-
-const Cam = styled.button`
-    
 `
