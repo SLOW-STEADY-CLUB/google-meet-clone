@@ -1,6 +1,6 @@
 import React from "react";
-import { GlobalStyle } from "./util/global-style";
-import Shared from "./shared/shared";
+import { GlobalStyle } from "./elem/global-style";
+import Shared from "./pages/shared";
 
 function App() {
   return (

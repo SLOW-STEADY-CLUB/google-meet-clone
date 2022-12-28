@@ -4,7 +4,6 @@ import { CiPaperplane } from "react-icons/ci";
 import { useParams } from "react-router-dom";
 import { database } from "../../../server/firebase";
 import { push, ref } from "firebase/database";
-import { getCookie } from "../../../shared/Cookie";
 
 const ChatFooter = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -20,9 +19,9 @@ const ChatFooter = () => {
     event.preventDefault();
     const timeList = new Date().toLocaleTimeString().split(":");
     const time = `${timeList[0]}:${timeList[1]}`;
-    const userNick = getCookie("userName");
+
     const data = {
-      userNick: userNick,
+      userNick: "susu",
       chatTime: time,
       content: inputRef.current?.value,
       roomId: roomId,
