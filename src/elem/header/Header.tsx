@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import HeaderBtn from "./HeaderBtn";
 import HeaderTime from "./HeaderTime";
-
+import Login from "../user/Login";
 const Header = () => {
   return (
     <Container>
@@ -13,7 +13,9 @@ const Header = () => {
         <HeaderTime />
         <HeaderBtn />
       </STBoxTimeBtn>
-      <LoginBtn></LoginBtn>
+      <LoginBtn>
+        <Login />
+      </LoginBtn>
     </Container>
   );
 };
