@@ -1,4 +1,3 @@
-
 import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import { SlQuestion, SlBubble, SlSettings } from "react-icons/sl";
@@ -8,9 +7,7 @@ interface AboutProps {
   question: boolean;
 }
 
-const HeaderBtn: React.FC<AboutProps> = ({ setQuestion, question }) => {
-
-
+const HeaderBtn: React.FC<AboutProps> = ({ setQuestion, question }) => { 
   return (
     <>
       <Button>
