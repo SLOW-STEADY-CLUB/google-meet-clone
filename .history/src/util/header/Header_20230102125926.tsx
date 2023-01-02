@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import HeaderBtn from "./HeaderBtn";
 import HeaderTime from "./HeaderTime";
@@ -7,21 +7,19 @@ import HeaderQuestionToggle from "./HeaderQuestionToggle";
 const Header = () => {
   const [question, setQuestion] = useState(false);
   return (
-    <>
-      <Container>
-        <ImgBox>
-          <STImgLogo src="https://res.cloudinary.com/softwarepundit/image/upload/c_lfill/dpr_1.0/f_auto/h_800/q_auto/w_800/v1/software/google-meet-logo" />
-        </ImgBox>
-        <STBoxTimeBtn>
-          <HeaderTime />
-          <HeaderBtn setQuestion={setQuestion} question={question} />
-        </STBoxTimeBtn>
-        <LoginBtn>
-          <Login />
-        </LoginBtn>
-      </Container>
+    <Container>
+      <ImgBox>
+        <STImgLogo src="https://res.cloudinary.com/softwarepundit/image/upload/c_lfill/dpr_1.0/f_auto/h_800/q_auto/w_800/v1/software/google-meet-logo" />
+      </ImgBox>
+      <STBoxTimeBtn>
+        <HeaderTime />
+        <HeaderBtn />
+      </STBoxTimeBtn>
+      <LoginBtn>
+        <Login />
+      </LoginBtn>
       {question && <HeaderQuestionToggle />}
-    </>
+    </Container>
   );
 };
 

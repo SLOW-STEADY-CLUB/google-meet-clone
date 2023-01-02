@@ -1,15 +1,11 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SlQuestion, SlBubble, SlSettings } from "react-icons/sl";
 import HeaderQuestionToggle from "./HeaderQuestionToggle";
 
-interface AboutProps {
-  setQuestion: Dispatch<SetStateAction<boolean>>;
-  question: boolean;
-}
+const HeaderBtn: React.FC = () => {
+  const [question, setQuestion] = useState(false);
 
-const HeaderBtn: React.FC<AboutProps> = ({ setQuestion, question }) => {
-  // const [question, setQuestion] = useState(false);
   // const onClickSignUp = () => {
   //   if (window.sessionStorage.getItem("token") === null) {
   //     const auth = getAuth();
@@ -31,7 +27,7 @@ const HeaderBtn: React.FC<AboutProps> = ({ setQuestion, question }) => {
     <>
       <Button>
         <SlQuestion
-          onClick={() => setQuestion(!question)}
+          onClick={() => setQuestion(true)}
           style={{ width: "24px", height: "24px" }}
         />
       </Button>
@@ -41,6 +37,7 @@ const HeaderBtn: React.FC<AboutProps> = ({ setQuestion, question }) => {
       <Button>
         <SlSettings style={{ width: "24px", height: "24px" }} />
       </Button>
+      {question && <HeaderQuestionToggle />}
     </>
   );
 };

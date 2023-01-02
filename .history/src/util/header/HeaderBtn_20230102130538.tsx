@@ -8,7 +8,8 @@ interface AboutProps {
   question: boolean;
 }
 
-const HeaderBtn: React.FC<AboutProps> = ({ setQuestion, question }) => {
+const HeaderBtn: React.FC = props => {
+  const setQuestion = props;
   // const [question, setQuestion] = useState(false);
   // const onClickSignUp = () => {
   //   if (window.sessionStorage.getItem("token") === null) {
