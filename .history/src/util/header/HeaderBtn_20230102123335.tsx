@@ -27,7 +27,7 @@ const HeaderBtn: React.FC = () => {
     <>
       <Button>
         <SlQuestion
-          onClick={() => setQuestion(!question)}
+          onClick={() => setQuestion(true)}
           style={{ width: "24px", height: "24px" }}
         />
       </Button>

@@ -17,6 +17,7 @@ const Header = () => {
       <LoginBtn>
         <Login />
       </LoginBtn>
+      <HeaderQuestionToggle />
     </Container>
   );
 };
