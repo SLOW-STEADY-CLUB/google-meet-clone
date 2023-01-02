@@ -24,6 +24,7 @@ const STBox = styled.div`
   font: 13px/27px Roboto, Arial, sans-serif;
   min-width: 320px;
   position: relative;
+  bottom: 70px;
   transition: box-shadow 250ms;
   display: flex;
   align-items: center;
@@ -31,11 +32,12 @@ const STBox = styled.div`
   vertical-align: middle;
   white-space: nowrap;
   -webkit-box-align: center;
+  z-index: 986;
 `;
 const STBoxQuestion = styled.div`
   transform-origin: right top;
   right: 0px;
-  top: 0px;
+  top: 48px;
   max-height: 745px;
   min-width: 17.5rem;
   box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
