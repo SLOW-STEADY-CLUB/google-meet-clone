@@ -1,28 +1,33 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styled from "styled-components";
 // import Webcam from "react-webcam"
+import { useParams } from 'react-router-dom';
 import { IoMicOffOutline, IoMicOutline, IoVideocamOffOutline, IoVideocamOutline } from "react-icons/io5";
 
 
 const Stream: React.FC = () => {
+    let { params } = useParams();
 
     const muteBtn = useRef<HTMLButtonElement>(null);
     const cameraBtn = useRef<HTMLButtonElement>(null);
-    const myFaceRef = useRef<HTMLVideoElement>(null);
+    const myFaceRef = useRef<HTMLVideoElement>(null); //myStream을 myFaceRef에 넣을 것 
+    console.log(myFaceRef.current) //null
 
-    let myStream;
-    let muted = false;
-    let cameraOff = false;
+    let myStream = useRef<HTMLAudioElement>(null)
+    let muted = false; //마이크가 켜진 상태로 시작
+    let cameraOff = false; //카메라가 켜진 상태로 시작
     
     //console.log(myFaceRef)
-    async function getMedia() {
+    async function getMedia(id = {}) {
         // navigator.mediaDevices.getUserMedia({
         //     video:true
             try {
                 myStream = await navigator.mediaDevices.getUserMedia({
                     audio: true,
                     video: true,
-                })
+                });
+                myFaceRef = myStream;
+                console.log(myStream)
                 .then((stream) => {
                     //비디오 tag에 stream 추가
                     let video = myFaceRef.current
@@ -37,7 +42,7 @@ const Stream: React.FC = () => {
             }
     }
     async function getAudio () {
-
+        
     }
     
     useEffect(() => {
@@ -45,6 +50,7 @@ const Stream: React.FC = () => {
       },[myFaceRef])
 
     function handleMuteClick () {
+       console.log(myStream.getAudioTracks())
         if (!muted) {
             //버튼 변경
             //muteBtn.innerText = "음소거 X"
@@ -137,8 +143,8 @@ const Stream: React.FC = () => {
                     // height: 480,
                     textAlign: "center",}}
             ></video>
-            <button ref={cameraBtn}>"카메라"</button>
-            <button ref={muteBtn}>"mute"</button>
+            <button ref={cameraBtn}>카메라</button>
+            <button ref={muteBtn}>mute</button>
             <Icon>
                 
                 <Mic>
