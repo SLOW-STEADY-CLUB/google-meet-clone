@@ -13,33 +13,27 @@ const HeaderBtn: React.FC<AboutProps> = ({ setQuestion, question }) => {
 import React, { useState } from "react";
 import styled from "styled-components";
 import { SlQuestion, SlBubble, SlSettings } from "react-icons/sl";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  UserCredential,
-  signInWithPopup,
-} from "firebase/auth";
-import { provider } from "../../server/firebase";
+import HeaderQuestionToggle from "./HeaderQuestionToggle";
 
 const HeaderBtn: React.FC = () => {
-  const [user, setUser] = useState({});
+  const [question, setQuestion] = useState(false);
 
-  const onClickSignUp = () => {
-    if (window.sessionStorage.getItem("token") === null) {
-      const auth = getAuth();
-      signInWithPopup(auth, provider).then((result: UserCredential) => {
-        const credential = GoogleAuthProvider?.credentialFromResult(result);
-        if (credential !== null && credential.accessToken !== undefined) {
-          const token: string = credential.accessToken;
-          window.sessionStorage.setItem("token", token);
-        }
-        const user = result.user;
-        setUser(user);
-      });
-    } else {
-      window.alert("이미 로그인 하셨습니다");
-    }
-  };
+  // const onClickSignUp = () => {
+  //   if (window.sessionStorage.getItem("token") === null) {
+  //     const auth = getAuth();
+  //     signInWithPopup(auth, provider).then((result: UserCredential) => {
+  //       const credential = GoogleAuthProvider?.credentialFromResult(result);
+  //       if (credential !== null && credential.accessToken !== undefined) {
+  //         const token: string = credential.accessToken;
+  //         window.sessionStorage.setItem("token", token);
+  //       }
+  //       const user = result.user;
+  //       setUser(user);
+  //     });
+  //   } else {
+  //     window.alert("이미 로그인 하셨습니다");
+  //   }
+  // };
 
 >>>>>>> b1bf7d5 ([EDIT] getCookie)
   return (
@@ -47,10 +41,14 @@ const HeaderBtn: React.FC = () => {
       <Button>
         <SlQuestion
 <<<<<<< HEAD
+<<<<<<< HEAD
           onClick={() => setQuestion(!question)}
 =======
           onClick={onClickSignUp}
 >>>>>>> b1bf7d5 ([EDIT] getCookie)
+=======
+          onClick={() => setQuestion(!question)}
+>>>>>>> c534daf (edit header question btn)
           style={{ width: "24px", height: "24px" }}
         />
       </Button>
@@ -60,6 +58,7 @@ const HeaderBtn: React.FC = () => {
       <Button>
         <SlSettings style={{ width: "24px", height: "24px" }} />
       </Button>
+      {question && <HeaderQuestionToggle />}
     </>
   );
 };

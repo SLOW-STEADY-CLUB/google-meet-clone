@@ -35,7 +35,11 @@ const STBox = styled.div`
 const STBoxQuestion = styled.div`
   transform-origin: right top;
   right: 0px;
+<<<<<<< HEAD
   top: 0px;
+=======
+  top: 48px;
+>>>>>>> c534daf (edit header question btn)
   max-height: 745px;
   min-width: 17.5rem;
   box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
