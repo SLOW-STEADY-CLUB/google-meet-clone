@@ -1,15 +1,19 @@
-import React from 'react';
 import styled from 'styled-components';
 import FooterBox from './component/footerLeft/FooterBox';
 const Meet = () => {
 
 
   return (
-    <div>
+    <STContents>
       <FooterBox ></FooterBox>
-     
-    </div>
+    </STContents>
   );
 };
+
+const STContents = styled.div`
+background-color: #2c2a2a;
+  width: 100vw;
+  height: 100vh;
+`
 
 export default Meet;

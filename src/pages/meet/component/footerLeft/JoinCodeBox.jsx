@@ -4,11 +4,14 @@ import styled from 'styled-components';
 
 export const JoinCodeBox = () => {
     const joinCode = useParams().roomId;
+    const date = new Date().toLocaleTimeString().split(":");
+    const currentTime = `${date[0]}:${date[1]}`;
     return (
         <div>
              <STJoinCodeBox>
-                <STTitle>방 코드</STTitle>
-                <STCode>{joinCode}</STCode>
+                <STCode>
+                    <div>{currentTime} <span>  |  </span> {joinCode}  </div> 
+                </STCode>
              </STJoinCodeBox>
         </div>
     );
@@ -17,10 +20,15 @@ export const JoinCodeBox = () => {
 const  STJoinCodeBox = styled.div`
     
 `
-const STTitle = styled.div`
 
-`
-const STCode = styled.div`    
 
+const STCode = styled.div`   
+display: flex;
+
+color: white;
+
+span {
+    margin: 10px;
+}
 `
 
