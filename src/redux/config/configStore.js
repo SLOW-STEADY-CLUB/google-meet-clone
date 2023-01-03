@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import join from "../modules/joinSlice";
+// import { configureStore } from "@reduxjs/toolkit";
+// import join from "../modules/joinSlice";
 
-const store = configureStore({
-    reducer: { join }
-})
+// const store = configureStore({
+//     reducer: { join }
+// })
 
-export default store;
+// export default store;
