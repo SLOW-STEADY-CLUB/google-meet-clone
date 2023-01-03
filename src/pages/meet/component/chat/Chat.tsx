@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import ChatHeader from "./ChatHeader";
-import ChatBody from "./ChatBody";
-import ChatFooter from "./ChatFooter";
+import ChatHeader from "../chat/ChatHeader";
+import ChatBody from "../chat/ChatBody";
+import ChatFooter from "../chat/ChatFooter";
 
 const Chat = () => {
   return (

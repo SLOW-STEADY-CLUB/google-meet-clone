@@ -2,9 +2,9 @@ import React, { ReducerAction, useRef } from "react";
 import styled from "styled-components";
 import { CiPaperplane } from "react-icons/ci";
 import { useParams } from "react-router-dom";
-import { database } from "../../../server/firebase";
+import { database } from "../../../../server/firebase";
 import { push, ref } from "firebase/database";
-import { getCookie } from "../../../shared/Cookie";
+import { getCookie } from "../../../../shared/Cookie";
 
 const ChatFooter = () => {
   const inputRef = useRef<HTMLInputElement>(null);
