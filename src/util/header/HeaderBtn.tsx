@@ -7,11 +7,12 @@ interface AboutProps {
   question: boolean;
 }
 
-const HeaderBtn: React.FC<AboutProps> = ({ setQuestion, question }) => {
+const HeaderBtn: React.FC<AboutProps> = ({ setQuestion, question }) => { 
   return (
     <>
       <Button>
         <SlQuestion
+
           onClick={() => setQuestion(!question)}
           style={{ width: "24px", height: "24px" }}
         />

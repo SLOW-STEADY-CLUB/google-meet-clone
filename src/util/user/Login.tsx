@@ -59,7 +59,7 @@ const Login: React.FC = () => {
   }, [isToken]);
   console.log(isToken);
   return (
-    <div>
+    <STLoginContainer>
       {isLogin === false ? (
         <STButtonLogin onClick={onClickLogin}>로그인</STButtonLogin>
       ) : (
@@ -67,10 +67,18 @@ const Login: React.FC = () => {
       )}
 
       {/* <LoginButton /> */}
-    </div>
+    </STLoginContainer>
   );
 };
-const STButtonLogin = styled.div``;
+const STLoginContainer = styled.div`
+margin-right: 20px;
+
+`
+const STButtonLogin = styled.div`
+font-size: 20px;
+font-style: bold;
+cursor: pointer;
+`;
 const STButton = styled.div<{ url: string }>`
   width: 40px;
   height: 40px;
