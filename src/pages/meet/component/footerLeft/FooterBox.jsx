@@ -1,11 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import { JoinCodeBox } from './JoinCodeBox';
 const FooterBox = () => {
     return (
-        <div>
+        <STContainer>
             <JoinCodeBox></JoinCodeBox>
-        </div>
+        </STContainer>
     );
 };
-
+const STContainer = styled.div`
+    position: fixed;
+    bottom:0px;
+    margin: 20px;
+`
 export default FooterBox;
