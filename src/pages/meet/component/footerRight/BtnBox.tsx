@@ -35,7 +35,7 @@ const Button = styled.button`
   border-radius: 50%;
   color: #fff;
   :hover {
-    background-color: #eee;
+    background-color: #3c3939;
   }
 `;
 export default BtnBox;
