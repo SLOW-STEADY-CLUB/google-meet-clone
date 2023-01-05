@@ -11,19 +11,19 @@ const BtnBox = () => {
   return (
     <>
       <Button>
-        <BiInfoCircle />
+        <BiInfoCircle style={{ width: "22px", height: "22px" }} />
       </Button>
       <Button>
-        <BiGroup />
+        <BiGroup style={{ width: "22px", height: "22px" }} />
       </Button>
       <Button>
-        <BiCommentDetail />
+        <BiCommentDetail style={{ width: "22px", height: "22px" }} />
       </Button>
       <Button>
-        <BiCategoryAlt />
+        <BiCategoryAlt style={{ width: "22px", height: "22px" }} />
       </Button>
       <Button>
-        <BiLock />
+        <BiLock style={{ width: "22px", height: "22px" }} />
       </Button>
     </>
   );
