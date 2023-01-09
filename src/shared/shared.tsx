@@ -12,7 +12,7 @@ const Shared: React.FC = () => {
       <Route path="/" element={<Main />} errorElement={<ErrorPage />} />
       <Route path="/meet/:roomId" element={<Meet />} errorElement={<ErrorPage />} />
       {/* <Route path="/join/:roomId" element={<Join />} /> */}
-      {/* <Route path="*" element={<Main />} errorElement={<ErrorPage />} /> */}
+      <Route path="*" element={<Main />} errorElement={<ErrorPage />} />
     </Routes>
   );
 };
