@@ -57,7 +57,6 @@ const Login: React.FC = () => {
       setIsLogin(false);
     }
   }, [isToken]);
-  console.log(isToken);
   return (
     <STLoginContainer>
       {isLogin === false ? (

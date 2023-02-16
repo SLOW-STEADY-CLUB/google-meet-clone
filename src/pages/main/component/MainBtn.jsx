@@ -1,34 +1,86 @@
 import React, { useRef, useState } from "react";
-import { db } from "../../../server/firebase";
+import { db, pc } from "../../../server/firebase";
 import styled from "styled-components";
 import { MdOutlineVideoCall } from "react-icons/md";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
 import { nanoid } from "nanoid";
 import { To, useNavigate } from "react-router-dom";
 import { getCookie } from "../../../shared/Cookie";
 import signInWithGoogle from "../../../shared/SignInWithPopup";
-
-interface NavigateFunction {
-  (to: To): void;
-}
+import { query } from "firebase/database";
+// interface NavigateFunction {
+//   (to: To): void;
+// }
 
 const MainBtn = () => {
-  const [onFocused, setOnFocused] = useState<boolean>(false);
-  const [join, setJoin] = useState<boolean>(false);
-  const navigate: NavigateFunction = useNavigate();
+  const [onFocused, setOnFocused] = useState(false);
+  const [join, setJoin] = useState(false);
+  const navigate = useNavigate();
   const id = nanoid();
-  const inputRef = useRef<HTMLInputElement>(null);
-  let dataId: string[] = [];
+  const inputRef = useRef(null);
+  let dataId = [];
 
   const onClickAddBtn = async () => {
     if (getCookie("token") !== undefined) {
-      const userId = getCookie("email");
-      const data = {
-        userId: userId,
-        roomId: id,
+      const postData = collection(db, `${id}`);
+      const offerCandidate = collection(db, "offerCadidate");
+      const answerCandidate = collection(db, "answerCandidate");
+
+      const createOfferDescription = await pc.createOffer();
+      await pc.setLocalDescription(createOfferDescription);
+      const offer = {
+        sdp: createOfferDescription.sdp,
+        type: createOfferDescription.type,
+        id,
       };
-      await addDoc(collection(db, "meetting"), data);
-      navigate(`/meet/${data.roomId}`);
+
+      addDoc(postData, offer);
+
+      pc.onicecandidate = e => {
+        if (e.candidate) {
+          const candy = {
+            candy: e.candidate.toJSON(),
+            id,
+          };
+          addDoc(offerCandidate, candy);
+        }
+      };
+      const locate = query(postData);
+      onSnapshot(locate, snap => {
+        let data = [];
+        snap.forEach(doc => {
+          data.push(doc.data());
+        });
+        const findAnswer = data.find(i => i.type === "answer");
+
+        // console.log(pc.currentRemoteDescription);
+        if (findAnswer) {
+          const answer = {
+            sdp: findAnswer.sdp,
+            type: findAnswer.type,
+          };
+          const answerDescription = new RTCSessionDescription(answer);
+          pc.setRemoteDescription(answerDescription);
+          console.log("Merry 님이 접속했습니다.");
+        }
+      });
+
+      const candidateLocate = query(answerCandidate);
+      onSnapshot(candidateLocate, snap => {
+        snap.forEach(doc => {
+          if (doc.data().joinRoomName === id) {
+            const answerCandy = doc.data();
+            pc.addIceCandidate(new RTCIceCandidate(answerCandy.candy));
+          }
+        });
+      });
+      // const userId = getCookie("email");
+      // const data = {
+      //   userId: userId,
+      //   roomId: id,
+      // };
+      // await addDoc(collection(db, "meetting"), data);
+      navigate(`/meet/${id}`);
     }
     if (getCookie("token") === undefined) {
       signInWithGoogle();
@@ -44,7 +96,7 @@ const MainBtn = () => {
   };
 
   const checkRoomId = async () => {
-    await dataId.map((id: string) => {
+    await dataId.map(id => {
       if (id === inputRef.current?.value) {
         return navigate(`/join/${id}`);
       } else {
@@ -133,7 +185,10 @@ const JoinInput = styled.input`
   }
 `;
 
-const JoinBtn = styled.button<{ visual: boolean }>`
+const JoinBtn =
+  // styled.button <
+  // { visual: boolean } >
+  `
   visibility: ${props => (props.visual ? "visible" : "hidden")};
   margin-left: 20px;
   font-size: 1em;
