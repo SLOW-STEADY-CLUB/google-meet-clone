@@ -1,12 +1,12 @@
 import React from "react";
 import { GlobalStyle } from "./util/global-style";
-import Shared from "./shared/shared";
+import Router from "./shared/Router";
 
 function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Shared />
+      <Router />
     </div>
   );
 }

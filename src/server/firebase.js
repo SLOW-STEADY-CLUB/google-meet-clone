@@ -25,3 +25,14 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const database = getDatabase(app);
 export const provider = new GoogleAuthProvider();
+
+const servers = {
+  iceServers: [
+    {
+      urls: ["stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302"], // free stun server
+    },
+  ],
+  iceCandidatePoolSize: 10,
+};
+
+export const pc = new RTCPeerConnection(servers);
