@@ -1,25 +1,39 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+
 import {
   IoMicOffOutline,
   IoMicOutline,
   IoVideocamOffOutline,
   IoVideocamOutline,
 } from "react-icons/io5";
-
-const Stream = ({ audio, setAudio, video, setVideo }) => {
-  const myFaceRef = useRef();
+interface VideoProps {
+  setAudio: Dispatch<SetStateAction<boolean>>;
+  setVideo: Dispatch<SetStateAction<boolean>>;
+  audio: boolean;
+  video: boolean;
+}
+const Stream: React.FC<VideoProps> = ({ audio, setAudio, video, setVideo }) => {
+  const myFaceRef = useRef<HTMLVideoElement>(null);
 
   const getUserMedia = async () => {
     if (video === true) {
       const containts = { audio, video: { width: 600, height: 400 } };
       try {
-        let stream = await navigator.mediaDevices.getUserMedia(containts);
-        myFaceRef.current.srcObject = stream;
-        myFaceRef.current.onloadedmetadata = () => {
-          myFaceRef.current.play();
-        };
+        let stream: MediaStream | null =
+          await navigator.mediaDevices.getUserMedia(containts);
+        if (myFaceRef.current) {
+          myFaceRef.current.srcObject = stream ? stream : null;
+          myFaceRef.current.onloadedmetadata = () => {
+            myFaceRef.current && myFaceRef.current.play();
+          };
+        }
       } catch (err) {
         console.log(err);
       }
@@ -28,8 +42,12 @@ const Stream = ({ audio, setAudio, video, setVideo }) => {
       const containts = { audio, video: { width: 600, height: 400 } };
       try {
         let stream = await navigator.mediaDevices.getUserMedia(containts);
-        myFaceRef.current.srcObject = stream;
-        myFaceRef.current.onloadedmetadata = () => {};
+        if (myFaceRef.current) {
+          myFaceRef.current.srcObject = stream;
+          myFaceRef.current.onloadedmetadata = () => {
+            return null;
+          };
+        }
       } catch (err) {
         console.log(err);
       }

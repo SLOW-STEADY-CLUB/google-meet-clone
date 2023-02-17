@@ -16,7 +16,7 @@ export const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  //measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
   databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
 };
 
