@@ -1,25 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import { getCookie } from "../../shared/Cookie";
+import { collection, getDocs } from "firebase/firestore";
+import { useParams } from "react-router-dom";
 import Stream from "./component/Stream";
+import { db } from "../../server/firebase";
+const Join = () => {
+  const { roomId } = useParams();
+  const [email, setEmail] = useState("");
+  const [audio, setAudio] = useState(false);
+  const [video, setVideo] = useState(true);
+  const navigate = useNavigate();
+  let dataId = [];
 
-const Join: React.FC = () => {
+  const getUserEmail = () => {
+    setEmail(getCookie("email"));
+    if (email === undefined) {
+      navigate("/");
+    }
+  };
+
+  const onClickJoinBtn = async () => {
+    const dataList = await getDocs(collection(db, "meetting"));
+    dataList.forEach(data => {
+      return dataId.push(data.data().roomId);
+    });
+    checkRoomId();
+  };
+
+  const checkRoomId = async () => {
+    dataId.map(id => {
+      if (id === roomId) {
+        console.log(id);
+        return navigate(`/meet/${id}`);
+      }
+    });
+  };
+
+  useEffect(() => {
+    getUserEmail();
+  }, [email]);
+
   return (
     <Container>
       <Head>
         <ImgBox>
           <LogoImg src="https://res.cloudinary.com/softwarepundit/image/upload/c_lfill/dpr_1.0/f_auto/h_800/q_auto/w_800/v1/software/google-meet-logo" />
         </ImgBox>
-        <Profile>@gmail.com</Profile>
+        <Profile>{email}</Profile>
       </Head>
       <Body>
         <CameraArea>
-          <Text>카메라가 꺼져 있음</Text>
-          <Stream />
+          {/* <Text>카메라가 꺼져 있음</Text> */}
+          <Stream
+            audio={audio}
+            setAudio={setAudio}
+            video={video}
+            setVideo={setVideo}
+          />
         </CameraArea>
         <Box>
           <div>참여할 준비가 되셨나요?</div>
-          <JoinBtn>참여하기</JoinBtn>
+          <JoinBtn onClick={onClickJoinBtn}>참여하기</JoinBtn>
         </Box>
       </Body>
     </Container>
