@@ -29,7 +29,7 @@ const Stream: React.FC<VideoProps> = ({ audio, setAudio, video, setVideo }) => {
         let stream: MediaStream | null =
           await navigator.mediaDevices.getUserMedia(containts);
         if (myFaceRef.current) {
-          myFaceRef.current.srcObject = stream ? stream : null;
+          myFaceRef.current.srcObject = stream;
           myFaceRef.current.onloadedmetadata = () => {
             myFaceRef.current && myFaceRef.current.play();
           };
