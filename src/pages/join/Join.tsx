@@ -9,10 +9,10 @@ import { db } from "../../server/firebase";
 const Join = () => {
   const { roomId } = useParams();
   const [email, setEmail] = useState("");
-  const [audio, setAudio] = useState(false);
-  const [video, setVideo] = useState(true);
+  const [audio, setAudio] = useState<boolean>(false);
+  const [video, setVideo] = useState<boolean>(true);
   const navigate = useNavigate();
-  let dataId = [];
+  let dataId: string[] = [];
 
   const getUserEmail = () => {
     setEmail(getCookie("email"));

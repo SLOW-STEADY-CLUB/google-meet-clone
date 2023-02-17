@@ -2,7 +2,7 @@ import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
-export const setCookie = (name: string, value: string | null) => {
+export const setCookie = (name: string, value: string | null | boolean) => {
   return cookies.set(name, value);
 };
 
