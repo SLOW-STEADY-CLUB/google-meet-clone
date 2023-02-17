@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getCookie } from "../../shared/Cookie";
+import { getCookie, setCookie } from "../../shared/Cookie";
 import { collection, getDocs } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import Stream from "./component/Stream";
@@ -32,7 +32,8 @@ const Join = () => {
   const checkRoomId = async () => {
     dataId.map(id => {
       if (id === roomId) {
-        console.log(id);
+        setCookie("audio", audio);
+        setCookie("video", video);
         return navigate(`/meet/${id}`);
       }
     });
