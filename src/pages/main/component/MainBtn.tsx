@@ -46,7 +46,6 @@ const MainBtn = () => {
   const checkRoomId = async () => {
     dataId.map((id: string) => {
       if (id === inputRef.current?.value) {
-        console.log(id);
         return navigate(`/join/${id}`);
       } else {
         return setJoin(true);
