@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
-import { db } from "../../../api/firebase";
+import { db } from "../../../server/firebase";
 import styled from "styled-components";
 import { MdOutlineVideoCall } from "react-icons/md";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { nanoid } from "nanoid";
 import { To, useNavigate } from "react-router-dom";
+import { getCookie } from "../../../shared/Cookie";
+import signInWithGoogle from "../../../shared/SignInWithPopup";
 
 interface NavigateFunction {
   (to: To): void;
@@ -19,12 +21,18 @@ const MainBtn = () => {
   let dataId: string[] = [];
 
   const onClickAddBtn = async () => {
-    const data = {
-      userId: "1",
-      roomId: id,
-    };
-    await addDoc(collection(db, "meetting"), data);
-    navigate(`/meet/${data.roomId}`);
+    if (getCookie("token") !== undefined) {
+      const userId = getCookie("email");
+      const data = {
+        userId: userId,
+        roomId: id,
+      };
+      await addDoc(collection(db, "meetting"), data);
+      navigate(`/meet/${data.roomId}`);
+    }
+    if (getCookie("token") === undefined) {
+      signInWithGoogle();
+    }
   };
 
   const onClickJoinBtn = async () => {
@@ -36,7 +44,7 @@ const MainBtn = () => {
   };
 
   const checkRoomId = async () => {
-    await dataId.map((id: string) => {
+    dataId.map((id: string) => {
       if (id === inputRef.current?.value) {
         return navigate(`/join/${id}`);
       } else {
