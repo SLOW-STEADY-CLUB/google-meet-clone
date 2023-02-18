@@ -1,9 +1,8 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getDatabase } from "firebase/database";
-import { getAuth } from "firebase/auth";
-
+import { initializeApp } from "firebase/app"
+import { getFirestore } from "firebase/firestore"
+import { getDatabase } from "firebase/database"
+import { getAuth } from "firebase/auth"
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -14,14 +13,16 @@ export const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  //measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-};
+  //databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+}
+
+console.log(firebaseConfig.apiKey)
+console.log(firebaseConfig.authDomain)
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const database = getDatabase(app);
+const app = initializeApp(firebaseConfig)
+export const db = getFirestore(app)
+export const database = getDatabase(app)
 export const auth = getAuth(app)
 
 const servers = {
@@ -31,6 +32,6 @@ const servers = {
     },
   ],
   iceCandidatePoolSize: 10,
-};
+}
 
-export const pc = new RTCPeerConnection(servers);
+export const pc = new RTCPeerConnection(servers)

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import HeaderBtn from "./HeaderBtn";
-import HeaderTime from "./HeaderTime";
-import Login from "../user/Login";
-import HeaderQuestionToggle from "./HeaderQuestionToggle";
+import React, { useState } from "react"
+import styled from "styled-components"
+import HeaderBtn from "./HeaderBtn"
+import HeaderTime from "./HeaderTime"
+import Login from "../user/Login"
+import HeaderQuestionToggle from "./HeaderQuestionToggle"
 const Header = () => {
-  const [question, setQuestion] = useState(false);
+  const [question, setQuestion] = useState(false)
   return (
     <>
       <Container>
@@ -22,9 +22,8 @@ const Header = () => {
       </Container>
       {question && <HeaderQuestionToggle />}
     </>
-
-  );
-};
+  )
+}
 
 const Container = styled.div`
   position: relative;
@@ -37,7 +36,7 @@ const Container = styled.div`
   transition-timing-function: ease;
   transition-delay: 0s;
   transition-property: background-color;
-`;
+`
 const ImgBox = styled.div`
   width: 40vw;
   padding-right: 30px;
@@ -50,16 +49,17 @@ const ImgBox = styled.div`
   white-space: nowrap;
   -webkit-box-align: center;
   align-items: center;
-`;
+`
 
 //STImgLogo
 const STImgLogo = styled.img`
   width: 190px;
   height: 65px;
-`;
+`
 
 //STBoxTimeBtn
 const STBoxTimeBtn = styled.div`
+  transform: scale(1.3);
   position: relative;
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@ const STBoxTimeBtn = styled.div`
   -webkit-box-align: center;
   --mdc-font-size: 2vmin;
   --gm-button--font-size: 1em;
-`;
+`
 
 const LoginBtn = styled.div`
   box-sizing: border-box;
@@ -93,5 +93,5 @@ const LoginBtn = styled.div`
   display: flex;
   --mdc-font-size: 2vmin;
   --gm-button--font-size: 1em;
-`;
-export default Header;
+`
+export default Header

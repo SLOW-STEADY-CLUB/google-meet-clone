@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import MainBtn from "./MainBtn";
+import React from "react"
+import styled from "styled-components"
+import MainBtn from "./MainBtn"
 
 const MainLink: React.FC = () => {
   return (
@@ -14,16 +14,18 @@ const MainLink: React.FC = () => {
         <MainBtn />
       </div>
     </Container>
-  );
-};
+  )
+}
 const Container = styled.div`
+  transform: scale(1.3);
   display: inline-flex;
   flex-basis: 35rem;
   flex-direction: column;
   //flex-shrink: 0;
   max-width: 35rem;
-  padding: 1em 3em;
-`;
+  width: 100%;
+  padding: 3em 3em;
+`
 
 const Title = styled.div`
   font-family: "Google Sans Display", Roboto, Arial, sans-serif;
@@ -32,7 +34,7 @@ const Title = styled.div`
   letter-spacing: 0;
   line-height: 3.25rem;
   padding-bottom: 0.5em;
-`;
+`
 
 const Content = styled.div`
   font-family: "Google Sans", Roboto, Arial, sans-serif;
@@ -44,5 +46,5 @@ const Content = styled.div`
   color: var(--gm-color-caption, #5f6368);
   max-width: 30rem;
   padding-bottom: 3em;
-`;
-export default MainLink;
+`
+export default MainLink

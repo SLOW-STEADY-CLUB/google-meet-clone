@@ -1,63 +1,63 @@
-import React, { useRef, useState } from "react";
-import { db } from "../../../server/firebase";
-import styled from "styled-components";
-import { MdOutlineVideoCall } from "react-icons/md";
-import { addDoc, collection, getDocs } from "firebase/firestore";
-import { nanoid } from "nanoid";
-import { To, useNavigate } from "react-router-dom";
-import { getCookie } from "../../../shared/Cookie";
-import signInWithGoogle from "../../../shared/SignInWithPopup";
+import React, { useRef, useState } from "react"
+import { db } from "../../../server/firebase"
+import styled from "styled-components"
+import { MdOutlineVideoCall } from "react-icons/md"
+import { addDoc, collection, getDocs } from "firebase/firestore"
+import { nanoid } from "nanoid"
+import { To, useNavigate } from "react-router-dom"
+import { getCookie } from "../../../shared/Cookie"
+import signInWithGoogle from "../../../shared/SignInWithPopup"
 
 interface NavigateFunction {
-  (to: To): void;
+  (to: To): void
 }
 
 const MainBtn = () => {
-  const [onFocused, setOnFocused] = useState<boolean>(false);
-  const [join, setJoin] = useState<boolean>(false);
-  const navigate: NavigateFunction = useNavigate();
-  const id = nanoid();
-  const inputRef = useRef<HTMLInputElement>(null);
-  let dataId: string[] = [];
+  const [onFocused, setOnFocused] = useState<boolean>(false)
+  const [join, setJoin] = useState<boolean>(false)
+  const navigate: NavigateFunction = useNavigate()
+  const id = nanoid()
+  const inputRef = useRef<HTMLInputElement>(null)
+  let dataId: string[] = []
 
   const onClickAddBtn = async () => {
     if (getCookie("token") !== undefined) {
-      const userId = getCookie("email");
+      const userId = getCookie("email")
       const data = {
         userId: userId,
         roomId: id,
-      };
-      await addDoc(collection(db, "meetting"), data);
-      navigate(`/meet/${data.roomId}`);
+      }
+      await addDoc(collection(db, "meetting"), data)
+      navigate(`/meet/${data.roomId}`)
     }
     if (getCookie("token") === undefined) {
-      signInWithGoogle();
+      signInWithGoogle()
     }
-  };
+  }
 
   const onClickJoinBtn = async () => {
-    const dataList = await getDocs(collection(db, "meetting"));
+    const dataList = await getDocs(collection(db, "meetting"))
     dataList.forEach(data => {
-      return dataId.push(data.data().roomId);
-    });
-    checkRoomId();
-  };
+      return dataId.push(data.data().roomId)
+    })
+    checkRoomId()
+  }
 
   const checkRoomId = async () => {
     dataId.map((id: string) => {
       if (id === inputRef.current?.value) {
-        return navigate(`/join/${id}`);
+        return navigate(`/join/${id}`)
       } else {
-        return setJoin(true);
+        return setJoin(true)
       }
-    });
-  };
+    })
+  }
 
   return (
     <Container>
       <CreateBtn onClick={() => onClickAddBtn()}>
         <MdOutlineVideoCall
-          style={{ marginRight: "0.5rem", width: "20px", height: "20px" }}
+          style={{ marginRight: "0.5rem", width: "25px", height: "25px" }}
         />
         새 회의
       </CreateBtn>
@@ -65,8 +65,8 @@ const MainBtn = () => {
         placeholder="코드 또는 링크 입력"
         ref={inputRef}
         onKeyDown={() => {
-          setOnFocused(true);
-          setJoin(false);
+          setOnFocused(true)
+          setJoin(false)
         }}
       />
       <JoinBtn onClick={() => onClickJoinBtn()} visual={onFocused}>
@@ -74,13 +74,13 @@ const MainBtn = () => {
       </JoinBtn>
       {join && <p>참여 코드를 다시 확인해주세요</p>}
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-`;
+`
 const CreateBtn = styled.button`
   border-radius: 4px;
   position: relative;
@@ -110,7 +110,7 @@ const CreateBtn = styled.button`
   min-width: 64px;
   border: none;
   vertical-align: middle;
-`;
+`
 const JoinInput = styled.input`
   margin-top: 0.1rem;
   max-width: 20em;
@@ -131,7 +131,7 @@ const JoinInput = styled.input`
   :focus {
     outline: none;
   }
-`;
+`
 
 const JoinBtn = styled.button<{ visual: boolean }>`
   visibility: ${props => (props.visual ? "visible" : "hidden")};
@@ -147,6 +147,6 @@ const JoinBtn = styled.button<{ visual: boolean }>`
   text-transform: none;
   padding: 0 8px 0 8px;
   min-width: 64px;
-`;
+`
 
-export default MainBtn;
+export default MainBtn
